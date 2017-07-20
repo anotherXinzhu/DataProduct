@@ -1,5 +1,5 @@
 ---
-title: "Map"
+title: "Map of NUS"
 author: "Xinzhu Yi"
 date: "7/20/2017"
 output: ioslides_presentation
