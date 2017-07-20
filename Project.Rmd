@@ -1,0 +1,56 @@
+---
+title: "Map"
+author: "Xinzhu Yi"
+date: "7/20/2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Map of NUS
+July 20, 2017
+```{r, comment=""}
+library(leaflet)
+
+NUSlatLong<-data.frame(
+    lat=c(1.300415,1.296930,1.292395,1.295054),
+    lng=c(103.770797,103.773253,103.773971,103.773851))
+
+SchIcon<- makeIcon(
+    iconUrl = "http://bunatalajial.com/assets/uploads/home/01.png",
+    iconWidth = 28, iconHeight = 30,
+    iconAnchorX = 28/2, iconAnchorY=16
+)
+
+IibIcon<- makeIcon(
+    iconUrl = "https://d30y9cdsu7xlg0.cloudfront.net/png/79163-200.png",
+    iconWidth = 28, iconHeight = 30,
+    iconAnchorX = 28/2, iconAnchorY=16
+)
+
+NUSIcon<-icons(
+    iconUrl = c("http://bunatalajial.com/assets/uploads/home/01.png",
+                "https://d30y9cdsu7xlg0.cloudfront.net/png/79163-200.png",
+                "http://bunatalajial.com/assets/uploads/home/01.png",
+                "http://bunatalajial.com/assets/uploads/home/01.png"),
+    iconWidth = 28, iconHeight = 30,
+    iconAnchorX = 28/2, iconAnchorY=16
+)
+
+NUSSites<- c(
+    "<a href='https://www.eng.nus.edu.sg/'>NUS Engineering</a>",
+    "<a href='http://libportal.nus.edu.sg/frontend/index'>NUS Central Library</a>",
+    "<a href='https://bschool.nus.edu.sg/'>NUS Business School</a>",
+    "<a href='http://www.comp.nus.edu.sg/'>NUS School of Computing</a>"
+)
+
+NUSlatLong %>%
+    leaflet() %>%
+    addTiles() %>%
+    addMarkers(icon=NUSIcon, popup=NUSSites)
+```
+
+
+
